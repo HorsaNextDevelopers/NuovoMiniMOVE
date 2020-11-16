@@ -4,14 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AuthSystem.Models
 {
-    public class DistintaComponenti
+    public class DistintaComponente
     {
         [Key]
         [Column(TypeName = "nvarchar(128)")]
-        public string CodiceDistinta { get; set; }
-
-     
-
+        public string CodiceComponente { get; set; }
+        
         [Column(TypeName = "nvarchar(250)")]
         public string Descrizione { get; set; }
 
