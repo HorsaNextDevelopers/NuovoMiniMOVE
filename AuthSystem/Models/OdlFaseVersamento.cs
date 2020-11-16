@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AuthSystem.Areas.Identity.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -11,8 +12,8 @@ namespace AuthSystem.Models
     public class OdlFaseVersamento
     {
         [Key]
-        [Column(TypeName = "nvarchar(128)")]
-        public string IdVersamento { get; set; }
+        
+        public int IdVersamento { get; set; }
 
         public string CodiceArticolo { get; set; }
         [ForeignKey("CodiceArticolo ")]
@@ -28,6 +29,10 @@ namespace AuthSystem.Models
         [ForeignKey("CodiceMacchinaFisica ")]
         [DisplayName("CodiceMacchinaFisica")]
         public MacchinaFisica MacchinaFisiche { get; set; }
+        public string IdAspNetUsers { get; set; }
+        [ForeignKey("IdAspNetUsers ")]
+        [DisplayName("UserName")]
+        public ApplicationUser AspNetUsers { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd\\-MM\\-yyyy}", ApplyFormatInEditMode = true)]

@@ -26,13 +26,19 @@
             @Html.DisplayNameFor(model => model.OdlFasi)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OdlFasi.FaseOdl)
+            @Html.DisplayFor(model => model.OdlFasi.IdFaseOdl)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.MacchinaFisiche)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.MacchinaFisiche.CodiceMacchinaFisica)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AspNetUsers)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AspNetUsers.Id)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.DataInizio)

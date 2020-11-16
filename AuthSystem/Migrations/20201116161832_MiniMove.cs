@@ -302,15 +302,16 @@ namespace AuthSystem.Migrations
                 name: "OdlFasi",
                 columns: table => new
                 {
-                    FaseOdl = table.Column<int>(nullable: false)
+                    IdFaseOdl = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CodiceOdl = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CodiceArticolo = table.Column<string>(nullable: true),
+                    FaseOdl = table.Column<int>(nullable: false),
                     CodiceCentroDiLavoro = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OdlFasi", x => x.FaseOdl);
+                    table.PrimaryKey("PK_OdlFasi", x => x.IdFaseOdl);
                     table.ForeignKey(
                         name: "FK_OdlFasi_Articoli_CodiceArticolo",
                         column: x => x.CodiceArticolo,
@@ -335,11 +336,13 @@ namespace AuthSystem.Migrations
                 name: "OdlFaseVersamenti",
                 columns: table => new
                 {
-                    IdVersamento = table.Column<string>(type: "nvarchar(128)", nullable: false),
+                    IdVersamento = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CodiceArticolo = table.Column<string>(nullable: true),
                     CodiceOdl = table.Column<string>(nullable: true),
-                    FaseODL = table.Column<int>(nullable: false),
+                    IdFaseODL = table.Column<int>(nullable: false),
                     CodiceMacchinaFisica = table.Column<string>(nullable: true),
+                    IdAspNetUsers = table.Column<string>(nullable: true),
                     DataInizio = table.Column<DateTime>(nullable: false),
                     DataFine = table.Column<DateTime>(nullable: false),
                     TempoLavoroNetto = table.Column<DateTime>(nullable: false),
@@ -368,10 +371,16 @@ namespace AuthSystem.Migrations
                         principalColumn: "CodiceOdl",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_OdlFaseVersamenti_OdlFasi_FaseODL",
-                        column: x => x.FaseODL,
+                        name: "FK_OdlFaseVersamenti_AspNetUsers_IdAspNetUsers",
+                        column: x => x.IdAspNetUsers,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_OdlFaseVersamenti_OdlFasi_IdFaseODL",
+                        column: x => x.IdFaseODL,
                         principalTable: "OdlFasi",
-                        principalColumn: "FaseOdl",
+                        principalColumn: "IdFaseOdl",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -380,14 +389,14 @@ namespace AuthSystem.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "37c42e1d - 92e5 - 4216 - a308 - 2fa43d187bf1", "84c0d655-cc10-4a2a-9b3c-f487109f8f19", "User", "User" },
-                    { "a18be9c0-aa65-4af8-bd17-00bd9344e575", "f7aa94cc-b16c-447b-ba6b-7071ca1c5ace", "Admin", "ADMIN" }
+                    { "37c42e1d - 92e5 - 4216 - a308 - 2fa43d187bf1", "ea55df16-f9c0-46ab-b2d0-4fe0bb04e8dd", "User", "User" },
+                    { "a18be9c0-aa65-4af8-bd17-00bd9344e575", "fe02e2e2-3b59-4006-ba8c-04b817446e4d", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "f8d9b439-4a1c-4778-b334-992e8498d4ba", "admin@admin.com", true, null, null, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEOY/AUfkIxox4EfxFTZluTp3PRGWwccUDirHPp7RnzNRC4C84AaDshTtOe1ZMVjF1A==", null, false, "", false, "admin@admin.com" });
+                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "8770baa4-54ab-4534-bfa5-c932af4b2564", "admin@admin.com", true, null, null, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEM+k7gtBKbSA0WSaY1v5UdGT9pChCcqgQ3O3SNpS72q5JDbkp/3n5YfAJgbVKgkcPg==", null, false, "", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "Postazioni",
@@ -497,9 +506,14 @@ namespace AuthSystem.Migrations
                 column: "CodiceOdl");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OdlFaseVersamenti_FaseODL",
+                name: "IX_OdlFaseVersamenti_IdAspNetUsers",
                 table: "OdlFaseVersamenti",
-                column: "FaseODL");
+                column: "IdAspNetUsers");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OdlFaseVersamenti_IdFaseODL",
+                table: "OdlFaseVersamenti",
+                column: "IdFaseODL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OdlFasi_CodiceArticolo",

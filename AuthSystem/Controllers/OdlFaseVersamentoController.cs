@@ -21,12 +21,12 @@ namespace AuthSystem.Controllers
         // GET: OdlFaseVersamento
         public async Task<IActionResult> Index()
         {
-            var nContext = _context.OdlFaseVersamenti.Include(o => o.Articoli).Include(o => o.MacchinaFisiche).Include(o => o.Odl).Include(o => o.OdlFasi);
+            var nContext = _context.OdlFaseVersamenti.Include(o => o.Articoli).Include(o => o.AspNetUsers).Include(o => o.MacchinaFisiche).Include(o => o.Odl).Include(o => o.OdlFasi);
             return View(await nContext.ToListAsync());
         }
 
         // GET: OdlFaseVersamento/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -35,6 +35,7 @@ namespace AuthSystem.Controllers
 
             var odlFaseVersamento = await _context.OdlFaseVersamenti
                 .Include(o => o.Articoli)
+                .Include(o => o.AspNetUsers)
                 .Include(o => o.MacchinaFisiche)
                 .Include(o => o.Odl)
                 .Include(o => o.OdlFasi)
@@ -51,9 +52,10 @@ namespace AuthSystem.Controllers
         public IActionResult Create()
         {
             ViewData["CodiceArticolo"] = new SelectList(_context.Articoli, "CodiceArticolo", "CodiceArticolo");
+            ViewData["IdAspNetUsers"] = new SelectList(_context.AspNetUsers, "Id", "UserName");
             ViewData["CodiceMacchinaFisica"] = new SelectList(_context.MacchinaFisica, "CodiceMacchinaFisica", "CodiceMacchinaFisica");
             ViewData["CodiceOdl"] = new SelectList(_context.Odls, "CodiceOdl", "CodiceOdl");
-            ViewData["FaseODL"] = new SelectList(_context.OdlFasi, "FaseOdl", "FaseOdl");
+            ViewData["IdFaseODL"] = new SelectList(_context.OdlFasi, "IdFaseOdl", "FaseOdl");
             return View();
         }
 
@@ -62,7 +64,7 @@ namespace AuthSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdVersamento,CodiceArticolo,CodiceOdl,FaseODL,CodiceMacchinaFisica,DataInizio,DataFine,TempoLavoroNetto,PezziBuoni,PezziScartati")] OdlFaseVersamento odlFaseVersamento)
+        public async Task<IActionResult> Create([Bind("IdVersamento,CodiceArticolo,CodiceOdl,IdFaseODL,CodiceMacchinaFisica,IdAspNetUsers,DataInizio,DataFine,TempoLavoroNetto,PezziBuoni,PezziScartati")] OdlFaseVersamento odlFaseVersamento)
         {
             if (ModelState.IsValid)
             {
@@ -71,14 +73,15 @@ namespace AuthSystem.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CodiceArticolo"] = new SelectList(_context.Articoli, "CodiceArticolo", "CodiceArticolo", odlFaseVersamento.CodiceArticolo);
+            ViewData["IdAspNetUsers"] = new SelectList(_context.AspNetUsers, "Id", "UserName", odlFaseVersamento.IdAspNetUsers);
             ViewData["CodiceMacchinaFisica"] = new SelectList(_context.MacchinaFisica, "CodiceMacchinaFisica", "CodiceMacchinaFisica", odlFaseVersamento.CodiceMacchinaFisica);
             ViewData["CodiceOdl"] = new SelectList(_context.Odls, "CodiceOdl", "CodiceOdl", odlFaseVersamento.CodiceOdl);
-            ViewData["FaseODL"] = new SelectList(_context.OdlFasi, "FaseOdl", "FaseOdl", odlFaseVersamento.IdFaseODL);
+            ViewData["IdFaseODL"] = new SelectList(_context.OdlFasi, "IdFaseOdl", "FaseOdl", odlFaseVersamento.IdFaseODL);
             return View(odlFaseVersamento);
         }
 
         // GET: OdlFaseVersamento/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -91,9 +94,10 @@ namespace AuthSystem.Controllers
                 return NotFound();
             }
             ViewData["CodiceArticolo"] = new SelectList(_context.Articoli, "CodiceArticolo", "CodiceArticolo", odlFaseVersamento.CodiceArticolo);
+            ViewData["IdAspNetUsers"] = new SelectList(_context.AspNetUsers, "Id", "UserName", odlFaseVersamento.IdAspNetUsers);
             ViewData["CodiceMacchinaFisica"] = new SelectList(_context.MacchinaFisica, "CodiceMacchinaFisica", "CodiceMacchinaFisica", odlFaseVersamento.CodiceMacchinaFisica);
             ViewData["CodiceOdl"] = new SelectList(_context.Odls, "CodiceOdl", "CodiceOdl", odlFaseVersamento.CodiceOdl);
-            ViewData["FaseODL"] = new SelectList(_context.OdlFasi, "FaseOdl", "FaseOdl", odlFaseVersamento.IdFaseODL);
+            ViewData["IdFaseODL"] = new SelectList(_context.OdlFasi, "IdFaseOdl", "FaseOdl", odlFaseVersamento.IdFaseODL);
             return View(odlFaseVersamento);
         }
 
@@ -102,7 +106,7 @@ namespace AuthSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("IdVersamento,CodiceArticolo,CodiceOdl,FaseODL,CodiceMacchinaFisica,DataInizio,DataFine,TempoLavoroNetto,PezziBuoni,PezziScartati")] OdlFaseVersamento odlFaseVersamento)
+        public async Task<IActionResult> Edit(int id, [Bind("IdVersamento,CodiceArticolo,CodiceOdl,IdFaseODL,CodiceMacchinaFisica,IdAspNetUsers,DataInizio,DataFine,TempoLavoroNetto,PezziBuoni,PezziScartati")] OdlFaseVersamento odlFaseVersamento)
         {
             if (id != odlFaseVersamento.IdVersamento)
             {
@@ -130,14 +134,15 @@ namespace AuthSystem.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CodiceArticolo"] = new SelectList(_context.Articoli, "CodiceArticolo", "CodiceArticolo", odlFaseVersamento.CodiceArticolo);
+            ViewData["IdAspNetUsers"] = new SelectList(_context.AspNetUsers, "Id", "UserName", odlFaseVersamento.IdAspNetUsers);
             ViewData["CodiceMacchinaFisica"] = new SelectList(_context.MacchinaFisica, "CodiceMacchinaFisica", "CodiceMacchinaFisica", odlFaseVersamento.CodiceMacchinaFisica);
             ViewData["CodiceOdl"] = new SelectList(_context.Odls, "CodiceOdl", "CodiceOdl", odlFaseVersamento.CodiceOdl);
-            ViewData["FaseODL"] = new SelectList(_context.OdlFasi, "FaseOdl", "FaseOdl", odlFaseVersamento.IdFaseODL);
+            ViewData["IdFaseODL"] = new SelectList(_context.OdlFasi, "IdFaseOdl", "FaseOdl", odlFaseVersamento.IdFaseODL);
             return View(odlFaseVersamento);
         }
 
         // GET: OdlFaseVersamento/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -146,6 +151,7 @@ namespace AuthSystem.Controllers
 
             var odlFaseVersamento = await _context.OdlFaseVersamenti
                 .Include(o => o.Articoli)
+                .Include(o => o.AspNetUsers)
                 .Include(o => o.MacchinaFisiche)
                 .Include(o => o.Odl)
                 .Include(o => o.OdlFasi)
@@ -161,7 +167,7 @@ namespace AuthSystem.Controllers
         // POST: OdlFaseVersamento/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var odlFaseVersamento = await _context.OdlFaseVersamenti.FindAsync(id);
             _context.OdlFaseVersamenti.Remove(odlFaseVersamento);
@@ -169,7 +175,7 @@ namespace AuthSystem.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool OdlFaseVersamentoExists(string id)
+        private bool OdlFaseVersamentoExists(int id)
         {
             return _context.OdlFaseVersamenti.Any(e => e.IdVersamento == id);
         }

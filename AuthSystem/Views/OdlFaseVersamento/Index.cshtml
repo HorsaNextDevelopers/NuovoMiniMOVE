@@ -25,6 +25,9 @@
                 @Html.DisplayNameFor(model => model.MacchinaFisiche)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.AspNetUsers)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.DataInizio)
             </th>
             <th>
@@ -56,6 +59,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MacchinaFisiche.CodiceMacchinaFisica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AspNetUsers.UserName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DataInizio)

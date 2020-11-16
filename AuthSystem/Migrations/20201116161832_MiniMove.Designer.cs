@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthSystem.Migrations
 {
     [DbContext(typeof(NContext))]
-    [Migration("20201116142157_MiniMove")]
+    [Migration("20201116161832_MiniMove")]
     partial class MiniMove
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,13 +96,13 @@ namespace AuthSystem.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f8d9b439-4a1c-4778-b334-992e8498d4ba",
+                            ConcurrencyStamp = "8770baa4-54ab-4534-bfa5-c932af4b2564",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOY/AUfkIxox4EfxFTZluTp3PRGWwccUDirHPp7RnzNRC4C84AaDshTtOe1ZMVjF1A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM+k7gtBKbSA0WSaY1v5UdGT9pChCcqgQ3O3SNpS72q5JDbkp/3n5YfAJgbVKgkcPg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -220,7 +220,7 @@ namespace AuthSystem.Migrations
 
             modelBuilder.Entity("AuthSystem.Models.OdlFase", b =>
                 {
-                    b.Property<int>("FaseOdl")
+                    b.Property<int>("IdFaseOdl")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -234,7 +234,10 @@ namespace AuthSystem.Migrations
                     b.Property<string>("CodiceOdl")
                         .HasColumnType("nvarchar(128)");
 
-                    b.HasKey("FaseOdl");
+                    b.Property<int>("FaseOdl")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdFaseOdl");
 
                     b.HasIndex("CodiceArticolo");
 
@@ -247,8 +250,10 @@ namespace AuthSystem.Migrations
 
             modelBuilder.Entity("AuthSystem.Models.OdlFaseVersamento", b =>
                 {
-                    b.Property<string>("IdVersamento")
-                        .HasColumnType("nvarchar(128)");
+                    b.Property<int>("IdVersamento")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CodiceArticolo")
                         .HasColumnType("nvarchar(128)");
@@ -265,7 +270,10 @@ namespace AuthSystem.Migrations
                     b.Property<DateTime>("DataInizio")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("FaseODL")
+                    b.Property<string>("IdAspNetUsers")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("IdFaseODL")
                         .HasColumnType("int");
 
                     b.Property<int>("PezziBuoni")
@@ -285,7 +293,9 @@ namespace AuthSystem.Migrations
 
                     b.HasIndex("CodiceOdl");
 
-                    b.HasIndex("FaseODL");
+                    b.HasIndex("IdAspNetUsers");
+
+                    b.HasIndex("IdFaseODL");
 
                     b.ToTable("OdlFaseVersamenti");
                 });
@@ -524,14 +534,14 @@ namespace AuthSystem.Migrations
                         new
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                            ConcurrencyStamp = "f7aa94cc-b16c-447b-ba6b-7071ca1c5ace",
+                            ConcurrencyStamp = "fe02e2e2-3b59-4006-ba8c-04b817446e4d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "37c42e1d - 92e5 - 4216 - a308 - 2fa43d187bf1",
-                            ConcurrencyStamp = "84c0d655-cc10-4a2a-9b3c-f487109f8f19",
+                            ConcurrencyStamp = "ea55df16-f9c0-46ab-b2d0-4fe0bb04e8dd",
                             Name = "User",
                             NormalizedName = "User"
                         });
@@ -709,9 +719,13 @@ namespace AuthSystem.Migrations
                         .WithMany()
                         .HasForeignKey("CodiceOdl");
 
+                    b.HasOne("AuthSystem.Areas.Identity.Data.ApplicationUser", "AspNetUsers")
+                        .WithMany()
+                        .HasForeignKey("IdAspNetUsers");
+
                     b.HasOne("AuthSystem.Models.OdlFase", "OdlFasi")
                         .WithMany()
-                        .HasForeignKey("FaseODL")
+                        .HasForeignKey("IdFaseODL")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

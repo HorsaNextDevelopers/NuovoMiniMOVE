@@ -55,7 +55,7 @@ namespace AuthSystem.Controllers
                 var result = await _userManager.CreateAsync(user, viewModel.Password);
                 if (result.Succeeded)
                 {
-                    var result2 = await _userManager.AddToRoleAsync(user, "Normal");
+                    var result2 = await _userManager.AddToRoleAsync(user, "User");
                     
                     _logger.LogInformation("User created a new account with password.");
 
