@@ -17,6 +17,7 @@ namespace AuthSystem.Models
         public string CodiceArticolo { get; set; }
         [ForeignKey("CodiceArticolo ")]
         public Articolo Articoli { get; set; }
+
         [Key]
         public int FaseOdl { get; set; }
         public string CodiceCentroDiLavoro { get; set; }
