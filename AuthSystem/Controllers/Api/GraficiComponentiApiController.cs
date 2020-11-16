@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Linq;
 using AuthSystem.Models;
 using AuthSystem.ViewModel;
@@ -54,3 +54,4 @@ namespace AuthSystem.Controllers.Api
         }
     }
 }
+*/
