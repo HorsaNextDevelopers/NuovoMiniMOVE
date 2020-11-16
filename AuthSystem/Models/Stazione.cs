@@ -25,7 +25,7 @@ namespace AuthSystem.Models
 
         [ForeignKey("IdLinea")]
         [DisplayName("Nome linea")]
-        public Linea Linee { get; set; }
+        public CentroDiLavoro Linee { get; set; }
 
         public ComponenteArticolo ComponentiArticolo { get; set; }
     }

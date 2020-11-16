@@ -110,8 +110,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <ul id="PostoPerListaGiorni"></ul>
-                Confermi di voler prenotare questo posto?
+                <ul id = "PostoPerListaGiorni"></ul>
+                Confermi di voler prenotare questo posto in questa/e date?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
@@ -267,6 +267,7 @@
                 if (result.dataResult[i].occupato) {
                     var x = new Date(result.dataResult[i].data);
                     $('#PostoPerListaGiorni').append('<type="text" class="postoCheckBox" selDate= "' + result.dataResult[i].data + '" selPosto="' + result.dataResult[i].nomePostazione + '"  /> ' + x.toLocaleDateString("it-IT") + ' OCCUPATO <br/>');
+
                 }
                 else {
                     var x = new Date(result.dataResult[i].data);

@@ -25,7 +25,7 @@ namespace AuthSystem.Controllers.Api
 
         // GET: api/<LineeApiController>
         [HttpGet]
-        public IEnumerable<Linea> Get()
+        public IEnumerable<CentroDiLavoro> Get()
         {
             return _context.Linee;
         }
@@ -46,7 +46,7 @@ namespace AuthSystem.Controllers.Api
 
         // POST api/<LineeApiController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Linea linea)
+        public async Task<IActionResult> Post([FromBody] CentroDiLavoro linea)
         {
             if (!ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace AuthSystem.Controllers.Api
 
         // PUT api/<LineeApiController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Linea linea)
+        public async Task<IActionResult> Put(int id, [FromBody] CentroDiLavoro linea)
         {
             if (!ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace AuthSystem.Controllers.Api
 
         // DELETE api/<LineeApiController>/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Linea>> Delete(int id)
+        public async Task<ActionResult<CentroDiLavoro>> Delete(int id)
         {
             var linea = await _context.Linee.
                 FirstOrDefaultAsync(m => m.IdLinea == id);

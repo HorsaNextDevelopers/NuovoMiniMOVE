@@ -50,7 +50,7 @@ namespace AuthSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdLinea,NomeLinea")] Linea linea)
+        public async Task<IActionResult> Create([Bind("IdLinea,NomeLinea")] CentroDiLavoro linea)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace AuthSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdLinea,NomeLinea")] Linea linea)
+        public async Task<IActionResult> Edit(int id, [Bind("IdLinea,NomeLinea")] CentroDiLavoro linea)
         {
             if (id != linea.IdLinea)
             {
