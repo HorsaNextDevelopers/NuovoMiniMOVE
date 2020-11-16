@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthSystem.Migrations
 {
     [DbContext(typeof(NContext))]
-    [Migration("20201116115446_MiniMove")]
+    [Migration("20201116132120_MiniMove")]
     partial class MiniMove
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,13 +96,13 @@ namespace AuthSystem.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cd7d4cec-e950-46ee-ad67-795577b7b345",
+                            ConcurrencyStamp = "edb689bd-9cdf-4035-8575-34ce34c1e77a",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKyi7EoIh6UukOHWtB+tU4rsY2JhJDO5jkWeo7Vt0oZESp3YHRhSBO0N8RtRQNrgPA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEApeMHX0cGVcoMT6OXuRe20vcMbl2lyg6u1kIXOB9lkoBaLSodly48cEcPuhb8E3Iw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -165,6 +165,9 @@ namespace AuthSystem.Migrations
 
                     b.Property<string>("CodiceComponente")
                         .HasColumnType("nvarchar(128)");
+
+                    b.Property<string>("DescrizioneComponentePadre")
+                        .HasColumnType("nvarchar(250)");
 
                     b.HasKey("CodiceComponentePadre");
 
@@ -515,14 +518,14 @@ namespace AuthSystem.Migrations
                         new
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                            ConcurrencyStamp = "4479a422-b99a-406a-88a0-b4f736ae09ca",
+                            ConcurrencyStamp = "6766b66e-65d8-4e3a-a91d-aede369bef41",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "37c42e1d - 92e5 - 4216 - a308 - 2fa43d187bf1",
-                            ConcurrencyStamp = "08e7ef47-2638-4ce9-aae1-e7839fa402d8",
+                            ConcurrencyStamp = "900ee824-66c1-4f70-bad2-cef29984cfcd",
                             Name = "User",
                             NormalizedName = "User"
                         });

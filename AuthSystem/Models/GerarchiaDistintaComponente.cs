@@ -17,7 +17,8 @@ namespace AuthSystem.Models
         [Key]
         [Column(TypeName = "nvarchar(128)")]
         public string CodiceComponentePadre { get; set; }
-        public string DescrizioneComponentePadre { get; }
+        [Column(TypeName = "nvarchar(250)")]
+        public string DescrizioneComponentePadre { get; set; }
 
     }
 }
