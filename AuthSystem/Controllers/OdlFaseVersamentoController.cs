@@ -73,7 +73,7 @@ namespace AuthSystem.Controllers
             ViewData["CodiceArticolo"] = new SelectList(_context.Articoli, "CodiceArticolo", "CodiceArticolo", odlFaseVersamento.CodiceArticolo);
             ViewData["CodiceMacchinaFisica"] = new SelectList(_context.MacchinaFisica, "CodiceMacchinaFisica", "CodiceMacchinaFisica", odlFaseVersamento.CodiceMacchinaFisica);
             ViewData["CodiceOdl"] = new SelectList(_context.Odls, "CodiceOdl", "CodiceOdl", odlFaseVersamento.CodiceOdl);
-            ViewData["FaseODL"] = new SelectList(_context.OdlFasi, "FaseOdl", "FaseOdl", odlFaseVersamento.FaseODL);
+            ViewData["FaseODL"] = new SelectList(_context.OdlFasi, "FaseOdl", "FaseOdl", odlFaseVersamento.IdFaseODL);
             return View(odlFaseVersamento);
         }
 
@@ -93,7 +93,7 @@ namespace AuthSystem.Controllers
             ViewData["CodiceArticolo"] = new SelectList(_context.Articoli, "CodiceArticolo", "CodiceArticolo", odlFaseVersamento.CodiceArticolo);
             ViewData["CodiceMacchinaFisica"] = new SelectList(_context.MacchinaFisica, "CodiceMacchinaFisica", "CodiceMacchinaFisica", odlFaseVersamento.CodiceMacchinaFisica);
             ViewData["CodiceOdl"] = new SelectList(_context.Odls, "CodiceOdl", "CodiceOdl", odlFaseVersamento.CodiceOdl);
-            ViewData["FaseODL"] = new SelectList(_context.OdlFasi, "FaseOdl", "FaseOdl", odlFaseVersamento.FaseODL);
+            ViewData["FaseODL"] = new SelectList(_context.OdlFasi, "FaseOdl", "FaseOdl", odlFaseVersamento.IdFaseODL);
             return View(odlFaseVersamento);
         }
 
@@ -132,7 +132,7 @@ namespace AuthSystem.Controllers
             ViewData["CodiceArticolo"] = new SelectList(_context.Articoli, "CodiceArticolo", "CodiceArticolo", odlFaseVersamento.CodiceArticolo);
             ViewData["CodiceMacchinaFisica"] = new SelectList(_context.MacchinaFisica, "CodiceMacchinaFisica", "CodiceMacchinaFisica", odlFaseVersamento.CodiceMacchinaFisica);
             ViewData["CodiceOdl"] = new SelectList(_context.Odls, "CodiceOdl", "CodiceOdl", odlFaseVersamento.CodiceOdl);
-            ViewData["FaseODL"] = new SelectList(_context.OdlFasi, "FaseOdl", "FaseOdl", odlFaseVersamento.FaseODL);
+            ViewData["FaseODL"] = new SelectList(_context.OdlFasi, "FaseOdl", "FaseOdl", odlFaseVersamento.IdFaseODL);
             return View(odlFaseVersamento);
         }
 

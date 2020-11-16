@@ -20,8 +20,8 @@ namespace AuthSystem.Models
         public string CodiceOdl { get; set; }
         [ForeignKey("CodiceOdl ")]
         public Odl Odl { get; set; }
-        public int FaseODL { get; set; }
-        [ForeignKey("FaseODL ")]
+        public int IdFaseODL { get; set; }
+        [ForeignKey("IdFaseODL ")]
         public OdlFase OdlFasi { get; set; }
 
         public string CodiceMacchinaFisica { get; set; }

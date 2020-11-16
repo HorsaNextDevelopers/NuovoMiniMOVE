@@ -37,7 +37,7 @@ namespace AuthSystem.Controllers
                 .Include(o => o.Articoli)
                 .Include(o => o.CentriDiLavoro)
                 .Include(o => o.Odls)
-                .FirstOrDefaultAsync(m => m.FaseOdl == id);
+                .FirstOrDefaultAsync(m => m.IdFaseOdl == id);
             if (odlFase == null)
             {
                 return NotFound();
@@ -60,7 +60,7 @@ namespace AuthSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodiceOdl,CodiceArticolo,FaseOdl,CodiceCentroDiLavoro")] OdlFase odlFase)
+        public async Task<IActionResult> Create([Bind("IdFaseOdl,CodiceOdl,CodiceArticolo,FaseOdl,CodiceCentroDiLavoro")] OdlFase odlFase)
         {
             if (ModelState.IsValid)
             {
@@ -98,9 +98,9 @@ namespace AuthSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CodiceOdl,CodiceArticolo,FaseOdl,CodiceCentroDiLavoro")] OdlFase odlFase)
+        public async Task<IActionResult> Edit(int id, [Bind("IdFaseOdl,CodiceOdl,CodiceArticolo,FaseOdl,CodiceCentroDiLavoro")] OdlFase odlFase)
         {
-            if (id != odlFase.FaseOdl)
+            if (id != odlFase.IdFaseOdl)
             {
                 return NotFound();
             }
@@ -114,7 +114,7 @@ namespace AuthSystem.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OdlFaseExists(odlFase.FaseOdl))
+                    if (!OdlFaseExists(odlFase.IdFaseOdl))
                     {
                         return NotFound();
                     }
@@ -143,7 +143,7 @@ namespace AuthSystem.Controllers
                 .Include(o => o.Articoli)
                 .Include(o => o.CentriDiLavoro)
                 .Include(o => o.Odls)
-                .FirstOrDefaultAsync(m => m.FaseOdl == id);
+                .FirstOrDefaultAsync(m => m.IdFaseOdl == id);
             if (odlFase == null)
             {
                 return NotFound();
@@ -165,7 +165,7 @@ namespace AuthSystem.Controllers
 
         private bool OdlFaseExists(int id)
         {
-            return _context.OdlFasi.Any(e => e.FaseOdl == id);
+            return _context.OdlFasi.Any(e => e.IdFaseOdl == id);
         }
     }
 }
