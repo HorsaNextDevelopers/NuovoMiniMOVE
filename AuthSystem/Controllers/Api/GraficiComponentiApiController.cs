@@ -27,9 +27,9 @@ namespace AuthSystem.Controllers.Api
         // GET api/<GraficiComponentiApiController>/5
         [HttpGet]
         [Route("GetComponenti/{idArticolo}")]
-        public IActionResult GetComponenti(int idArticolo)
+        public IActionResult GetComponenti(string codiceArticolo)
         {
-            var componenti = _context.ComponentiArticolo.Where(c => c.IdArticolo == idArticolo).ToList();
+            var componenti = _context.ComponentiArticolo.Where(c => c.codiceArticolo == CodiceArticolo).ToList();
 
             return this.Ok(componenti);
         }

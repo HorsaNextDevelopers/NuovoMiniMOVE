@@ -6,6 +6,10 @@ namespace AuthSystem.Models
 {
     public class DistintaComponente
     {
+        public string CodiceArticolo { get; set; }
+        [ForeignKey("CodiceArticolo ")]
+        public Articolo Articoli { get; set; }
+
         [Key]
         [Column(TypeName = "nvarchar(128)")]
         public string CodiceComponente { get; set; }
@@ -13,6 +17,10 @@ namespace AuthSystem.Models
         [Column(TypeName = "nvarchar(250)")]
         public string Descrizione { get; set; }
 
-       
+       public int Quantita { get; set; }
+
+
+
+
     }
 }
