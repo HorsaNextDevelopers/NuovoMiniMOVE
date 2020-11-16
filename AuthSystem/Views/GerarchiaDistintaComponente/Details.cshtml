@@ -16,21 +16,9 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DistintaComponenti.CodiceComponente)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CodiceComponentePadre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CodiceComponentePadre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DescrizioneComponentePadre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DescrizioneComponentePadre)
-        </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.CodiceComponente">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.CodiceComponentePadre">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

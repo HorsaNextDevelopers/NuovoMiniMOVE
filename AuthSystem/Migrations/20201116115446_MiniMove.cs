@@ -283,19 +283,18 @@ namespace AuthSystem.Migrations
                 name: "GerarchiaDistintaComponente",
                 columns: table => new
                 {
-                    CodiceComponente = table.Column<string>(type: "nvarchar(128)", nullable: false),
-                    CodiceComponentePadre = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    DescrizioneComponentePadre = table.Column<string>(nullable: true)
+                    CodiceComponentePadre = table.Column<string>(type: "nvarchar(128)", nullable: false),
+                    CodiceComponente = table.Column<string>(type: "nvarchar(128)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GerarchiaDistintaComponente", x => x.CodiceComponente);
+                    table.PrimaryKey("PK_GerarchiaDistintaComponente", x => x.CodiceComponentePadre);
                     table.ForeignKey(
                         name: "FK_GerarchiaDistintaComponente_DistintaComponenti_CodiceComponente",
                         column: x => x.CodiceComponente,
                         principalTable: "DistintaComponenti",
                         principalColumn: "CodiceComponente",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -373,14 +372,14 @@ namespace AuthSystem.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "37c42e1d - 92e5 - 4216 - a308 - 2fa43d187bf1", "2435e01f-1163-49a2-a0f4-7d7978949d29", "User", "User" },
-                    { "a18be9c0-aa65-4af8-bd17-00bd9344e575", "291caea4-a439-4f0f-9f93-7e51254cf06b", "Admin", "ADMIN" }
+                    { "37c42e1d - 92e5 - 4216 - a308 - 2fa43d187bf1", "08e7ef47-2638-4ce9-aae1-e7839fa402d8", "User", "User" },
+                    { "a18be9c0-aa65-4af8-bd17-00bd9344e575", "4479a422-b99a-406a-88a0-b4f736ae09ca", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "3dcefd00-059c-468b-a6ca-d2d48ad258c0", "admin@admin.com", true, null, null, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEIo/BCSNC4hSkSLAHBxj4tagKLCq8sHZfdIC0MUHJ6FdleqhoErgBLwS77Z5rabumg==", null, false, "", false, "admin@admin.com" });
+                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "cd7d4cec-e950-46ee-ad67-795577b7b345", "admin@admin.com", true, null, null, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEKyi7EoIh6UukOHWtB+tU4rsY2JhJDO5jkWeo7Vt0oZESp3YHRhSBO0N8RtRQNrgPA==", null, false, "", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "Postazioni",
@@ -463,6 +462,11 @@ namespace AuthSystem.Migrations
                 name: "IX_DistintaComponenti_CodiceArticolo",
                 table: "DistintaComponenti",
                 column: "CodiceArticolo");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GerarchiaDistintaComponente_CodiceComponente",
+                table: "GerarchiaDistintaComponente",
+                column: "CodiceComponente");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MacchinaFisica_CodiceCentroDiLavoro",

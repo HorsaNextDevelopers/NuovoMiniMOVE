@@ -35,7 +35,7 @@ namespace AuthSystem.Controllers
 
             var gerarchiaDistintaComponente = await _context.GerarchiaDistintaComponenti
                 .Include(g => g.DistintaComponenti)
-                .FirstOrDefaultAsync(m => m.CodiceComponente == id);
+                .FirstOrDefaultAsync(m => m.CodiceComponentePadre == id);
             if (gerarchiaDistintaComponente == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace AuthSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodiceComponente,CodiceComponentePadre,DescrizioneComponentePadre")] GerarchiaDistintaComponente gerarchiaDistintaComponente)
+        public async Task<IActionResult> Create([Bind("CodiceComponente,CodiceComponentePadre")] GerarchiaDistintaComponente gerarchiaDistintaComponente)
         {
             if (ModelState.IsValid)
             {
@@ -90,9 +90,9 @@ namespace AuthSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("CodiceComponente,CodiceComponentePadre,DescrizioneComponentePadre")] GerarchiaDistintaComponente gerarchiaDistintaComponente)
+        public async Task<IActionResult> Edit(string id, [Bind("CodiceComponente,CodiceComponentePadre")] GerarchiaDistintaComponente gerarchiaDistintaComponente)
         {
-            if (id != gerarchiaDistintaComponente.CodiceComponente)
+            if (id != gerarchiaDistintaComponente.CodiceComponentePadre)
             {
                 return NotFound();
             }
@@ -106,7 +106,7 @@ namespace AuthSystem.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GerarchiaDistintaComponenteExists(gerarchiaDistintaComponente.CodiceComponente))
+                    if (!GerarchiaDistintaComponenteExists(gerarchiaDistintaComponente.CodiceComponentePadre))
                     {
                         return NotFound();
                     }
@@ -131,7 +131,7 @@ namespace AuthSystem.Controllers
 
             var gerarchiaDistintaComponente = await _context.GerarchiaDistintaComponenti
                 .Include(g => g.DistintaComponenti)
-                .FirstOrDefaultAsync(m => m.CodiceComponente == id);
+                .FirstOrDefaultAsync(m => m.CodiceComponentePadre == id);
             if (gerarchiaDistintaComponente == null)
             {
                 return NotFound();
@@ -153,7 +153,7 @@ namespace AuthSystem.Controllers
 
         private bool GerarchiaDistintaComponenteExists(string id)
         {
-            return _context.GerarchiaDistintaComponenti.Any(e => e.CodiceComponente == id);
+            return _context.GerarchiaDistintaComponenti.Any(e => e.CodiceComponentePadre == id);
         }
     }
 }

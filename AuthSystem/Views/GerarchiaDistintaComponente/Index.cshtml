@@ -15,12 +15,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.DistintaComponenti)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CodiceComponentePadre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DescrizioneComponentePadre)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -31,15 +25,9 @@
                 @Html.DisplayFor(modelItem => item.DistintaComponenti.CodiceComponente)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CodiceComponentePadre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescrizioneComponentePadre)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CodiceComponente">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CodiceComponente">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CodiceComponente">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.CodiceComponentePadre">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CodiceComponentePadre">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CodiceComponentePadre">Delete</a>
             </td>
         </tr>
 }

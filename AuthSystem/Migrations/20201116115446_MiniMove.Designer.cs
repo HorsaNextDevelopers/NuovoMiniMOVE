@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthSystem.Migrations
 {
     [DbContext(typeof(NContext))]
-    [Migration("20201116113137_MiniMove")]
+    [Migration("20201116115446_MiniMove")]
     partial class MiniMove
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,13 +96,13 @@ namespace AuthSystem.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3dcefd00-059c-468b-a6ca-d2d48ad258c0",
+                            ConcurrencyStamp = "cd7d4cec-e950-46ee-ad67-795577b7b345",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIo/BCSNC4hSkSLAHBxj4tagKLCq8sHZfdIC0MUHJ6FdleqhoErgBLwS77Z5rabumg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKyi7EoIh6UukOHWtB+tU4rsY2JhJDO5jkWeo7Vt0oZESp3YHRhSBO0N8RtRQNrgPA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -160,16 +160,15 @@ namespace AuthSystem.Migrations
 
             modelBuilder.Entity("AuthSystem.Models.GerarchiaDistintaComponente", b =>
                 {
-                    b.Property<string>("CodiceComponente")
-                        .HasColumnType("nvarchar(128)");
-
                     b.Property<string>("CodiceComponentePadre")
                         .HasColumnType("nvarchar(128)");
 
-                    b.Property<string>("DescrizioneComponentePadre")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("CodiceComponente")
+                        .HasColumnType("nvarchar(128)");
 
-                    b.HasKey("CodiceComponente");
+                    b.HasKey("CodiceComponentePadre");
+
+                    b.HasIndex("CodiceComponente");
 
                     b.ToTable("GerarchiaDistintaComponente");
                 });
@@ -516,14 +515,14 @@ namespace AuthSystem.Migrations
                         new
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                            ConcurrencyStamp = "291caea4-a439-4f0f-9f93-7e51254cf06b",
+                            ConcurrencyStamp = "4479a422-b99a-406a-88a0-b4f736ae09ca",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "37c42e1d - 92e5 - 4216 - a308 - 2fa43d187bf1",
-                            ConcurrencyStamp = "2435e01f-1163-49a2-a0f4-7d7978949d29",
+                            ConcurrencyStamp = "08e7ef47-2638-4ce9-aae1-e7839fa402d8",
                             Name = "User",
                             NormalizedName = "User"
                         });
@@ -655,9 +654,7 @@ namespace AuthSystem.Migrations
                 {
                     b.HasOne("AuthSystem.Models.DistintaComponente", "DistintaComponenti")
                         .WithMany()
-                        .HasForeignKey("CodiceComponente")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CodiceComponente");
                 });
 
             modelBuilder.Entity("AuthSystem.Models.MacchinaFisica", b =>

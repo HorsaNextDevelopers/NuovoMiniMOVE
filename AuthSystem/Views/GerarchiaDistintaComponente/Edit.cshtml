@@ -12,17 +12,12 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="CodiceComponente" />
             <div class="form-group">
-                <label asp-for="CodiceComponentePadre" class="control-label"></label>
-                <input asp-for="CodiceComponentePadre" class="form-control" />
-                <span asp-validation-for="CodiceComponentePadre" class="text-danger"></span>
+                <label asp-for="CodiceComponente" class="control-label"></label>
+                <select asp-for="CodiceComponente" class="form-control" asp-items="ViewBag.CodiceComponente"></select>
+                <span asp-validation-for="CodiceComponente" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="DescrizioneComponentePadre" class="control-label"></label>
-                <input asp-for="DescrizioneComponentePadre" class="form-control" />
-                <span asp-validation-for="DescrizioneComponentePadre" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="CodiceComponentePadre" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
