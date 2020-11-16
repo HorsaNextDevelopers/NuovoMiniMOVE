@@ -9,7 +9,7 @@ namespace AuthSystem.Models
 {
     public class OdlFase
     {
-        [Key]
+       
         [Column(TypeName = "nvarchar(128)")]
         public string CodiceOdl { get; set; }
         [ForeignKey("CodiceOdl")]
@@ -17,6 +17,7 @@ namespace AuthSystem.Models
         public string CodiceArticolo { get; set; }
         [ForeignKey("CodiceArticolo ")]
         public Articolo Articoli { get; set; }
+        [Key]
         public int FaseOdl { get; set; }
         public string CodiceCentroDiLavoro { get; set; }
         [ForeignKey("CodiceCentroDiLavoro ")]
