@@ -20,13 +20,15 @@ namespace AuthSystem.Models
         }
       
         public DbSet<Articolo> Articoli { get; set; }
-        public DbSet<Versamento> Versamenti { get; set; }
+        public DbSet<OdlFaseVersamento> OdlFaseVersamenti { get; set; }
         public DbSet<ApplicationUser> AspNetUsers { get; set; }
-        public DbSet<ComponenteArticolo> ComponentiArticolo { get; set; }
+        public DbSet<DistintaComponente> DistintaComponenti { get; set; }
         public DbSet<CentroDiLavoro> Linee { get; set; }
-        public DbSet<Stazione> Stazioni { get; set; }
+        public DbSet<MacchinaFisica> MacchinaFisica { get; set; }
         public DbSet<Prenotazione> Prenotazioni { get; set; }
         public DbSet<Postazione> Postazioni { get; set; }
+        public DbSet<Odl> Odls { get; set; }
+        public DbSet<OdlFase> OdlFasi { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -51,8 +53,8 @@ namespace AuthSystem.Models
                 new IdentityRole
                 {
                     Id = "37c42e1d - 92e5 - 4216 - a308 - 2fa43d187bf1",
-                    Name = "Normal",
-                    NormalizedName = "NORMAL"
+                    Name = "User",
+                    NormalizedName = "User"
 
                 });
 
