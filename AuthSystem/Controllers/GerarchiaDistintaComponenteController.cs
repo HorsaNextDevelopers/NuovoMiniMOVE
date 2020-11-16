@@ -56,7 +56,7 @@ namespace AuthSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodiceComponente,CodiceComponentePadre")] GerarchiaDistintaComponente gerarchiaDistintaComponente)
+        public async Task<IActionResult> Create([Bind("CodiceComponente,CodiceComponentePadre,DescrizioneComponentePadre")] GerarchiaDistintaComponente gerarchiaDistintaComponente)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace AuthSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("CodiceComponente,CodiceComponentePadre")] GerarchiaDistintaComponente gerarchiaDistintaComponente)
+        public async Task<IActionResult> Edit(string id, [Bind("CodiceComponente,CodiceComponentePadre,DescrizioneComponentePadre")] GerarchiaDistintaComponente gerarchiaDistintaComponente)
         {
             if (id != gerarchiaDistintaComponente.CodiceComponentePadre)
             {

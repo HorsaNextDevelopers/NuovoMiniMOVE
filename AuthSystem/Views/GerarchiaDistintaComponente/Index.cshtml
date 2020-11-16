@@ -15,6 +15,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.DistintaComponenti)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescrizioneComponentePadre)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -23,6 +26,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.DistintaComponenti.CodiceComponente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescrizioneComponentePadre)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CodiceComponentePadre">Edit</a> |
