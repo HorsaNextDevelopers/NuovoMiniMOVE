@@ -280,15 +280,32 @@ namespace AuthSystem.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "GerarchiaDistintaComponente",
+                columns: table => new
+                {
+                    CodiceComponente = table.Column<string>(type: "nvarchar(128)", nullable: false),
+                    CodiceComponentePadre = table.Column<string>(type: "nvarchar(128)", nullable: true),
+                    DescrizioneComponentePadre = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GerarchiaDistintaComponente", x => x.CodiceComponente);
+                    table.ForeignKey(
+                        name: "FK_GerarchiaDistintaComponente_DistintaComponenti_CodiceComponente",
+                        column: x => x.CodiceComponente,
+                        principalTable: "DistintaComponenti",
+                        principalColumn: "CodiceComponente",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OdlFasi",
                 columns: table => new
                 {
                     CodiceOdl = table.Column<string>(type: "nvarchar(128)", nullable: false),
                     CodiceArticolo = table.Column<string>(nullable: true),
                     FaseOdl = table.Column<int>(nullable: false),
-                    CodiceCentroDiLavoro = table.Column<string>(nullable: true),
-                    DataInizio = table.Column<DateTime>(nullable: false),
-                    DataFine = table.Column<DateTime>(nullable: false)
+                    CodiceCentroDiLavoro = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -356,14 +373,14 @@ namespace AuthSystem.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "37c42e1d - 92e5 - 4216 - a308 - 2fa43d187bf1", "182f2724-b055-4e4b-b81b-a8c360d151d0", "User", "User" },
-                    { "a18be9c0-aa65-4af8-bd17-00bd9344e575", "7d0df071-5218-47a3-9869-94b813b92cd7", "Admin", "ADMIN" }
+                    { "37c42e1d - 92e5 - 4216 - a308 - 2fa43d187bf1", "2435e01f-1163-49a2-a0f4-7d7978949d29", "User", "User" },
+                    { "a18be9c0-aa65-4af8-bd17-00bd9344e575", "291caea4-a439-4f0f-9f93-7e51254cf06b", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "263c72f7-1a7e-470f-a273-a7892dfd8221", "admin@admin.com", true, null, null, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEAw8lsaj2WSx7p/9gUpSHS0wxnuHLfx55UU16jA9ADfT/Xr0WYDW+p/Nn17A/6j/Dg==", null, false, "", false, "admin@admin.com" });
+                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "3dcefd00-059c-468b-a6ca-d2d48ad258c0", "admin@admin.com", true, null, null, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEIo/BCSNC4hSkSLAHBxj4tagKLCq8sHZfdIC0MUHJ6FdleqhoErgBLwS77Z5rabumg==", null, false, "", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "Postazioni",
@@ -511,7 +528,7 @@ namespace AuthSystem.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "DistintaComponenti");
+                name: "GerarchiaDistintaComponente");
 
             migrationBuilder.DropTable(
                 name: "OdlFaseVersamenti");
@@ -521,6 +538,9 @@ namespace AuthSystem.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "DistintaComponenti");
 
             migrationBuilder.DropTable(
                 name: "MacchinaFisica");

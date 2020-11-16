@@ -21,7 +21,7 @@ namespace AuthSystem.Controllers
         // GET: GerarchiaDistintaComponente
         public async Task<IActionResult> Index()
         {
-            var nContext = _context.GerarchiaDistintaComponente.Include(g => g.DistintaComponenti);
+            var nContext = _context.GerarchiaDistintaComponenti.Include(g => g.DistintaComponenti);
             return View(await nContext.ToListAsync());
         }
 
@@ -33,7 +33,7 @@ namespace AuthSystem.Controllers
                 return NotFound();
             }
 
-            var gerarchiaDistintaComponente = await _context.GerarchiaDistintaComponente
+            var gerarchiaDistintaComponente = await _context.GerarchiaDistintaComponenti
                 .Include(g => g.DistintaComponenti)
                 .FirstOrDefaultAsync(m => m.CodiceComponente == id);
             if (gerarchiaDistintaComponente == null)
@@ -56,7 +56,7 @@ namespace AuthSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodiceComponente,CodiceComponentePadre")] GerarchiaDistintaComponente gerarchiaDistintaComponente)
+        public async Task<IActionResult> Create([Bind("CodiceComponente,CodiceComponentePadre,DescrizioneComponentePadre")] GerarchiaDistintaComponente gerarchiaDistintaComponente)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +76,7 @@ namespace AuthSystem.Controllers
                 return NotFound();
             }
 
-            var gerarchiaDistintaComponente = await _context.GerarchiaDistintaComponente.FindAsync(id);
+            var gerarchiaDistintaComponente = await _context.GerarchiaDistintaComponenti.FindAsync(id);
             if (gerarchiaDistintaComponente == null)
             {
                 return NotFound();
@@ -90,7 +90,7 @@ namespace AuthSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("CodiceComponente,CodiceComponentePadre")] GerarchiaDistintaComponente gerarchiaDistintaComponente)
+        public async Task<IActionResult> Edit(string id, [Bind("CodiceComponente,CodiceComponentePadre,DescrizioneComponentePadre")] GerarchiaDistintaComponente gerarchiaDistintaComponente)
         {
             if (id != gerarchiaDistintaComponente.CodiceComponente)
             {
@@ -129,7 +129,7 @@ namespace AuthSystem.Controllers
                 return NotFound();
             }
 
-            var gerarchiaDistintaComponente = await _context.GerarchiaDistintaComponente
+            var gerarchiaDistintaComponente = await _context.GerarchiaDistintaComponenti
                 .Include(g => g.DistintaComponenti)
                 .FirstOrDefaultAsync(m => m.CodiceComponente == id);
             if (gerarchiaDistintaComponente == null)
@@ -145,15 +145,15 @@ namespace AuthSystem.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var gerarchiaDistintaComponente = await _context.GerarchiaDistintaComponente.FindAsync(id);
-            _context.GerarchiaDistintaComponente.Remove(gerarchiaDistintaComponente);
+            var gerarchiaDistintaComponente = await _context.GerarchiaDistintaComponenti.FindAsync(id);
+            _context.GerarchiaDistintaComponenti.Remove(gerarchiaDistintaComponente);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool GerarchiaDistintaComponenteExists(string id)
         {
-            return _context.GerarchiaDistintaComponente.Any(e => e.CodiceComponente == id);
+            return _context.GerarchiaDistintaComponenti.Any(e => e.CodiceComponente == id);
         }
     }
 }

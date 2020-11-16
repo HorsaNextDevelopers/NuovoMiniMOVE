@@ -60,7 +60,7 @@ namespace AuthSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodiceOdl,CodiceArticolo,FaseOdl,CodiceCentroDiLavoro,DataInizio,DataFine")] OdlFase odlFase)
+        public async Task<IActionResult> Create([Bind("CodiceOdl,CodiceArticolo,FaseOdl,CodiceCentroDiLavoro")] OdlFase odlFase)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace AuthSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("CodiceOdl,CodiceArticolo,FaseOdl,CodiceCentroDiLavoro,DataInizio,DataFine")] OdlFase odlFase)
+        public async Task<IActionResult> Edit(string id, [Bind("CodiceOdl,CodiceArticolo,FaseOdl,CodiceCentroDiLavoro")] OdlFase odlFase)
         {
             if (id != odlFase.CodiceOdl)
             {

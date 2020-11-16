@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,11 +21,11 @@ namespace AuthSystem.Controllers
         {
             var viewModel = new GraficoViewModel();
 
-            var versamenti = _context.Versamenti.ToList();
+            var versamenti = _context.OdlFaseVersamenti.ToList();
 
-            var stazioni = _context.Stazioni.ToList();
+            var macchina = _context.MacchinaFisica.ToList();
 
-            var labels = stazioni.Select(s => s.NomeStazione).ToArray();
+            var labels = macchina.Select(s => s.CodiceMacchinaFisica).ToArray();
 
             var dataset1 = new StackedBarDatasetViewModel();
 
@@ -35,10 +35,10 @@ namespace AuthSystem.Controllers
 
             List<int> pezziBuoni = new List<int>();
 
-            foreach (var stazione in stazioni)
+            foreach (var macchine in macchina)
             {
-                pezziBuoni.Add(Convert.ToInt32((versamenti.Where(v => v.Stazioni == stazione).Sum(v => v.PezziBuoni))));
-                
+                pezziBuoni.Add(Convert.ToInt32((versamenti.Where(v => v.MacchinaFisiche == macchine).Sum(v => v.PezziBuoni))));
+
             }
 
             dataset1.Data = pezziBuoni.ToArray();
@@ -49,15 +49,15 @@ namespace AuthSystem.Controllers
 
             dataset2.BackgroundColor = "red";
 
-            List<int> pezziDifettosi = new List<int>();
+            List<int> pezziScartati = new List<int>();
 
-            foreach (var stazione in stazioni)
+            foreach (var macchine in macchina)
             {
-                pezziDifettosi.Add(Convert.ToInt32((versamenti.Where(v => v.Stazioni == stazione).Sum(v => v.PezziDifettosi))));
+                pezziScartati.Add(Convert.ToInt32((versamenti.Where(v => v.MacchinaFisiche == macchine).Sum(v => v.PezziScartati))));
 
             }
 
-            dataset2.Data = pezziDifettosi.ToArray();
+            dataset2.Data = pezziScartati.ToArray();
 
             viewModel.Labels = labels;
 
@@ -66,4 +66,4 @@ namespace AuthSystem.Controllers
             return View(viewModel);
         }
     }
-}*/
+}

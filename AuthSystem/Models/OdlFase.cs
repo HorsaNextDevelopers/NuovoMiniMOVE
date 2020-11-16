@@ -22,15 +22,6 @@ namespace AuthSystem.Models
         [ForeignKey("CodiceCentroDiLavoro ")]
         public CentroDiLavoro CentriDiLavoro { get; set; }
         
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd\\-MM\\-yyyy}", ApplyFormatInEditMode = true)]
-        [Required(ErrorMessage = "Immettere la data aggiornata")]
-        public DateTime DataInizio { get; set; }
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd\\-MM\\-yyyy}", ApplyFormatInEditMode = true)]
-        [Required(ErrorMessage = "Immettere la data aggiornata")]
-        public DateTime DataFine { get; set; }
 
     }
 }

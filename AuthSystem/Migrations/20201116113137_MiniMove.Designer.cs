@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthSystem.Migrations
 {
     [DbContext(typeof(NContext))]
-    [Migration("20201116102101_MiniMove1")]
-    partial class MiniMove1
+    [Migration("20201116113137_MiniMove")]
+    partial class MiniMove
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -96,13 +96,13 @@ namespace AuthSystem.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "573ce2fd-b05a-4e24-893f-4a59687fda07",
+                            ConcurrencyStamp = "3dcefd00-059c-468b-a6ca-d2d48ad258c0",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJdYOlOESkQaDYhcD2K2m874LcgWtymDgBnTZslQ0QDwjDkaZgAWJzgrvJODo8o0OQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIo/BCSNC4hSkSLAHBxj4tagKLCq8sHZfdIC0MUHJ6FdleqhoErgBLwS77Z5rabumg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -166,6 +166,9 @@ namespace AuthSystem.Migrations
                     b.Property<string>("CodiceComponentePadre")
                         .HasColumnType("nvarchar(128)");
 
+                    b.Property<string>("DescrizioneComponentePadre")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("CodiceComponente");
 
                     b.ToTable("GerarchiaDistintaComponente");
@@ -223,12 +226,6 @@ namespace AuthSystem.Migrations
 
                     b.Property<string>("CodiceCentroDiLavoro")
                         .HasColumnType("nvarchar(128)");
-
-                    b.Property<DateTime>("DataFine")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataInizio")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("FaseOdl")
                         .HasColumnType("int");
@@ -519,14 +516,14 @@ namespace AuthSystem.Migrations
                         new
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                            ConcurrencyStamp = "2c3a615c-e43d-45cd-be12-1a580e31b063",
+                            ConcurrencyStamp = "291caea4-a439-4f0f-9f93-7e51254cf06b",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "37c42e1d - 92e5 - 4216 - a308 - 2fa43d187bf1",
-                            ConcurrencyStamp = "ff69de14-4a83-4cc8-a587-2c114a459e8b",
+                            ConcurrencyStamp = "2435e01f-1163-49a2-a0f4-7d7978949d29",
                             Name = "User",
                             NormalizedName = "User"
                         });

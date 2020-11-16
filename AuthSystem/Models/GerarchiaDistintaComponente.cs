@@ -16,6 +16,7 @@ namespace AuthSystem.Models
         public DistintaComponente DistintaComponenti { get; set; }
         [Column(TypeName = "nvarchar(128)")]
         public string CodiceComponentePadre { get; set; }
+        public string DescrizioneComponentePadre { get; set; }
 
     }
 }
