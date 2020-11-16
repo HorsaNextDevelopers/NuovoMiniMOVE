@@ -46,9 +46,8 @@ namespace AuthSystem.Models
         [DisplayName("Data fine")]
         public DateTime DataFine { get; set; }
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:hh\\-mm\\-ss}", ApplyFormatInEditMode = true)]
-        [Required(ErrorMessage = "Immettere la data aggiornata")]
+        [DataType(DataType.Time)]
+        //[DisplayFormat(time= "{0:hh\\-mm\\-ss}", ApplyFormatInEditMode = true)]
         [DisplayName("Tempo di lavoro netto")]
         public DateTime TempoLavoroNetto { get; set; }
 
