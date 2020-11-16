@@ -1,0 +1,69 @@
+﻿@model IEnumerable<AuthSystem.Models.Versamento>
+
+@{
+    ViewData["Title"] = "Versamenti";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Versamenti</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PezziBuoni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PezziDifettosi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempoProd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComponentiArticolo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stazioni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AspNetUsers)
+            </th>
+            <th> <a asp-action="Create" class="btn btn-outline-success "><i class="far fa-plus-square"></i>Versamenti</a> </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PezziBuoni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PezziDifettosi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempoProd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComponentiArticolo.NomeComponente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stazioni.NomeStazione)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AspNetUsers.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdVersamento"><i class="fa fa-marker fa-lg"></i></a> |
+
+                <a asp-action="Delete" asp-route-id="@item.IdVersamento" class="text-danger ml-1"><i class="fa fa-trash-alt fa-lg"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

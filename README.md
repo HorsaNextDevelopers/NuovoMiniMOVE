@@ -1,2 +1,2 @@
-# NuovoMiniMOVE
-Web Application in ASP.NET MVC
+# ProgettoStage
+Web application ASP.NET portale con controllo accessi per versamenti di articoli
