@@ -24,8 +24,11 @@ namespace AuthSystem.Models
         [Required(ErrorMessage = "Immettere la data aggiornata")]
         public DateTime DataFine { get; set; }
 
+        public OdlStateEnum Stato { get; set; }
+
         public string CodiceArticolo { get; set; }
         [ForeignKey("CodiceArticolo ")]
         public Articolo Articoli { get; set; }
     }
+   
 }

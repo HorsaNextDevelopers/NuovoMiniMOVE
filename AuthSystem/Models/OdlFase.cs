@@ -23,7 +23,13 @@ namespace AuthSystem.Models
         public string CodiceCentroDiLavoro { get; set; }
         [ForeignKey("CodiceCentroDiLavoro ")]
         public CentroDiLavoro CentriDiLavoro { get; set; }
-        
+
+        public OdlStateEnum Stato { get; set; }
+
+        /* public string CodiceMacchinaFisica { get; set; }
+         [ForeignKey("CodiceMacchinaFisica ")]
+         public MacchinaFisica MacchineFisiche { get; set; }*/
 
     }
+   
 }
