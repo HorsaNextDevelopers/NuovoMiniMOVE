@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthSystem.Migrations
 {
     [DbContext(typeof(NContext))]
-    [Migration("20201116161832_MiniMove")]
+    [Migration("20201117140002_MiniMove")]
     partial class MiniMove
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,13 +96,13 @@ namespace AuthSystem.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8770baa4-54ab-4534-bfa5-c932af4b2564",
+                            ConcurrencyStamp = "ef296cdc-9ac8-4048-8c11-ccd689d040c1",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEM+k7gtBKbSA0WSaY1v5UdGT9pChCcqgQ3O3SNpS72q5JDbkp/3n5YfAJgbVKgkcPg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEORyXmk9w9j+PzIZ0Ja7JTp9knrqDKSoppc5IFi9qMWpKzqCaqvWieFlneRRkaZFdw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -211,6 +211,9 @@ namespace AuthSystem.Migrations
                     b.Property<int>("QuantitaDaProdurre")
                         .HasColumnType("int");
 
+                    b.Property<int>("Stato")
+                        .HasColumnType("int");
+
                     b.HasKey("CodiceOdl");
 
                     b.HasIndex("CodiceArticolo");
@@ -231,10 +234,16 @@ namespace AuthSystem.Migrations
                     b.Property<string>("CodiceCentroDiLavoro")
                         .HasColumnType("nvarchar(128)");
 
+                    b.Property<string>("CodiceMacchinaFisica")
+                        .HasColumnType("nvarchar(128)");
+
                     b.Property<string>("CodiceOdl")
                         .HasColumnType("nvarchar(128)");
 
                     b.Property<int>("FaseOdl")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Stato")
                         .HasColumnType("int");
 
                     b.HasKey("IdFaseOdl");
@@ -242,6 +251,8 @@ namespace AuthSystem.Migrations
                     b.HasIndex("CodiceArticolo");
 
                     b.HasIndex("CodiceCentroDiLavoro");
+
+                    b.HasIndex("CodiceMacchinaFisica");
 
                     b.HasIndex("CodiceOdl");
 
@@ -534,14 +545,14 @@ namespace AuthSystem.Migrations
                         new
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                            ConcurrencyStamp = "fe02e2e2-3b59-4006-ba8c-04b817446e4d",
+                            ConcurrencyStamp = "59269ca5-f01a-4b56-996d-a264f1e4ace4",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "37c42e1d - 92e5 - 4216 - a308 - 2fa43d187bf1",
-                            ConcurrencyStamp = "ea55df16-f9c0-46ab-b2d0-4fe0bb04e8dd",
+                            ConcurrencyStamp = "70601fe3-0406-4837-870e-7de1e9c44a4c",
                             Name = "User",
                             NormalizedName = "User"
                         });
@@ -699,6 +710,10 @@ namespace AuthSystem.Migrations
                     b.HasOne("AuthSystem.Models.CentroDiLavoro", "CentriDiLavoro")
                         .WithMany()
                         .HasForeignKey("CodiceCentroDiLavoro");
+
+                    b.HasOne("AuthSystem.Models.MacchinaFisica", "MacchineFisiche")
+                        .WithMany()
+                        .HasForeignKey("CodiceMacchinaFisica");
 
                     b.HasOne("AuthSystem.Models.Odl", "Odls")
                         .WithMany()

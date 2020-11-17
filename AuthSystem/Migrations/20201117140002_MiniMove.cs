@@ -114,6 +114,7 @@ namespace AuthSystem.Migrations
                     QuantitaDaProdurre = table.Column<int>(nullable: false),
                     DataInizio = table.Column<DateTime>(nullable: false),
                     DataFine = table.Column<DateTime>(nullable: false),
+                    Stato = table.Column<int>(nullable: false),
                     CodiceArticolo = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -307,7 +308,9 @@ namespace AuthSystem.Migrations
                     CodiceOdl = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CodiceArticolo = table.Column<string>(nullable: true),
                     FaseOdl = table.Column<int>(nullable: false),
-                    CodiceCentroDiLavoro = table.Column<string>(nullable: true)
+                    CodiceCentroDiLavoro = table.Column<string>(nullable: true),
+                    Stato = table.Column<int>(nullable: false),
+                    CodiceMacchinaFisica = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -323,6 +326,12 @@ namespace AuthSystem.Migrations
                         column: x => x.CodiceCentroDiLavoro,
                         principalTable: "CentriDiLavoro",
                         principalColumn: "CodiceCentroDiLavoro",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_OdlFasi_MacchinaFisica_CodiceMacchinaFisica",
+                        column: x => x.CodiceMacchinaFisica,
+                        principalTable: "MacchinaFisica",
+                        principalColumn: "CodiceMacchinaFisica",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_OdlFasi_Odls_CodiceOdl",
@@ -389,14 +398,14 @@ namespace AuthSystem.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "37c42e1d - 92e5 - 4216 - a308 - 2fa43d187bf1", "ea55df16-f9c0-46ab-b2d0-4fe0bb04e8dd", "User", "User" },
-                    { "a18be9c0-aa65-4af8-bd17-00bd9344e575", "fe02e2e2-3b59-4006-ba8c-04b817446e4d", "Admin", "ADMIN" }
+                    { "37c42e1d - 92e5 - 4216 - a308 - 2fa43d187bf1", "70601fe3-0406-4837-870e-7de1e9c44a4c", "User", "User" },
+                    { "a18be9c0-aa65-4af8-bd17-00bd9344e575", "59269ca5-f01a-4b56-996d-a264f1e4ace4", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "8770baa4-54ab-4534-bfa5-c932af4b2564", "admin@admin.com", true, null, null, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEM+k7gtBKbSA0WSaY1v5UdGT9pChCcqgQ3O3SNpS72q5JDbkp/3n5YfAJgbVKgkcPg==", null, false, "", false, "admin@admin.com" });
+                values: new object[] { "a18be9c0-aa65-4af8-bd17-00bd9344e575", 0, "ef296cdc-9ac8-4048-8c11-ccd689d040c1", "admin@admin.com", true, null, null, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEORyXmk9w9j+PzIZ0Ja7JTp9knrqDKSoppc5IFi9qMWpKzqCaqvWieFlneRRkaZFdw==", null, false, "", false, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "Postazioni",
@@ -526,6 +535,11 @@ namespace AuthSystem.Migrations
                 column: "CodiceCentroDiLavoro");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OdlFasi_CodiceMacchinaFisica",
+                table: "OdlFasi",
+                column: "CodiceMacchinaFisica");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OdlFasi_CodiceOdl",
                 table: "OdlFasi",
                 column: "CodiceOdl");
@@ -579,9 +593,6 @@ namespace AuthSystem.Migrations
                 name: "DistintaComponenti");
 
             migrationBuilder.DropTable(
-                name: "MacchinaFisica");
-
-            migrationBuilder.DropTable(
                 name: "OdlFasi");
 
             migrationBuilder.DropTable(
@@ -591,10 +602,13 @@ namespace AuthSystem.Migrations
                 name: "Postazioni");
 
             migrationBuilder.DropTable(
-                name: "CentriDiLavoro");
+                name: "MacchinaFisica");
 
             migrationBuilder.DropTable(
                 name: "Odls");
+
+            migrationBuilder.DropTable(
+                name: "CentriDiLavoro");
 
             migrationBuilder.DropTable(
                 name: "Articoli");

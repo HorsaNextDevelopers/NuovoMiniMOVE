@@ -31,6 +31,8 @@ namespace AuthSystem.Models
         public DbSet<Odl> Odls { get; set; }
         public DbSet<OdlFase> OdlFasi { get; set; }
 
+        //public DbSet<OdlStateEnum> OdlStato { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

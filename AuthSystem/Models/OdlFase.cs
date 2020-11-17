@@ -26,9 +26,9 @@ namespace AuthSystem.Models
 
         public OdlStateEnum Stato { get; set; }
 
-        /* public string CodiceMacchinaFisica { get; set; }
-         [ForeignKey("CodiceMacchinaFisica ")]
-         public MacchinaFisica MacchineFisiche { get; set; }*/
+        public string CodiceMacchinaFisica { get; set; }
+        [ForeignKey("CodiceMacchinaFisica ")]
+        public MacchinaFisica MacchineFisiche { get; set; }
 
     }
    
