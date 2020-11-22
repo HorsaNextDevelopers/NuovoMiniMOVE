@@ -48,6 +48,15 @@ namespace AuthSystem.Controllers
         public IActionResult Create()
         {
             ViewData["CodiceArticolo"] = new SelectList(_context.Articoli, "CodiceArticolo", "CodiceArticolo");
+            var states = new List<SelectListItem>()
+            {
+                new SelectListItem() {Text= OdlStateEnum.Nuovo.ToString(), Value= ((int)OdlStateEnum.Nuovo).ToString()},
+                new SelectListItem() {Text= OdlStateEnum.Sospeso.ToString(), Value= ((int)OdlStateEnum.Sospeso).ToString()},
+                new SelectListItem() {Text= OdlStateEnum.InCorso.ToString(), Value= ((int)OdlStateEnum.InCorso).ToString()},
+                new SelectListItem() {Text= OdlStateEnum.Completato.ToString(), Value= ((int)OdlStateEnum.Completato).ToString()}
+            };
+
+            ViewData["Stato"] = states;
             return View();
         }
 
@@ -65,6 +74,15 @@ namespace AuthSystem.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CodiceArticolo"] = new SelectList(_context.Articoli, "CodiceArticolo", "CodiceArticolo", odl.CodiceArticolo);
+            var states = new List<SelectListItem>()
+            {
+                new SelectListItem() {Text= OdlStateEnum.Nuovo.ToString(), Value= ((int)OdlStateEnum.Nuovo).ToString()},
+                new SelectListItem() {Text= OdlStateEnum.Sospeso.ToString(), Value= ((int)OdlStateEnum.Sospeso).ToString()},
+                new SelectListItem() {Text= OdlStateEnum.InCorso.ToString(), Value= ((int)OdlStateEnum.InCorso).ToString()},
+                new SelectListItem() {Text= OdlStateEnum.Completato.ToString(), Value= ((int)OdlStateEnum.Completato).ToString()}
+            };
+
+            ViewData["Stato"] = states;
             return View(odl);
         }
 
