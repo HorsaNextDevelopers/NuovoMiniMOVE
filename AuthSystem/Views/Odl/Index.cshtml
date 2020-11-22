@@ -74,12 +74,12 @@
         $("#selectODL").change(function () {
             ScegliODL();
         });
+    });
         function ScegliODL() {
             var codiceOdl = $("#selectODL").val();
             $.ajax({
-                url: "/api/OdlApi/GetOdl" + codiceOdl
+                url: "/api/OdlApi/GetOdl/" + codiceOdl
             }).done(function (result) {
             });
         }
-    }
 </script>
