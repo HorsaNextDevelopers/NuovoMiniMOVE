@@ -29,10 +29,10 @@ namespace AuthSystem.Controllers.Api
         }
 
         // GET: api/OdlApi/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Odl>> GetOdl(string id)
+        [HttpGet("{codiceOdl}")]
+        public async Task<ActionResult<Odl>> GetOdl(string codiceOdl)
         {
-            var odl = await _context.Odls.FindAsync(id);
+            var odl = await _context.Odls.FindAsync(codiceOdl);
 
             if (odl == null)
             {
@@ -42,83 +42,6 @@ namespace AuthSystem.Controllers.Api
             return odl;
         }
 
-        // PUT: api/OdlApi/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutOdl(string id, Odl odl)
-        {
-            if (id != odl.CodiceOdl)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(odl).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!OdlExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/OdlApi
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<Odl>> PostOdl(Odl odl)
-        {
-            _context.Odls.Add(odl);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (OdlExists(odl.CodiceOdl))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetOdl", new { id = odl.CodiceOdl }, odl);
-        }
-
-        // DELETE: api/OdlApi/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Odl>> DeleteOdl(string id)
-        {
-            var odl = await _context.Odls.FindAsync(id);
-            if (odl == null)
-            {
-                return NotFound();
-            }
-
-            _context.Odls.Remove(odl);
-            await _context.SaveChangesAsync();
-
-            return odl;
-        }
-
-        private bool OdlExists(string id)
-        {
-            return _context.Odls.Any(e => e.CodiceOdl == id);
-        }
+      
     }
 }
