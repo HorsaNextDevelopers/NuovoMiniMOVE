@@ -57,3 +57,29 @@
 }
     </tbody>
 </table>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div class="form-group">
+                <label class="control-label">Scegli il tuo ordine di lavoro: </label>
+                <select class="form-control" id="selectODL"></select>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#selectODL").change(function () {
+            ScegliODL();
+        });
+        function ScegliODL() {
+            var codiceOdl = $("#selectODL").val();
+            $.ajax({
+                url: "/api/OdlApi/GetOdl" + codiceOdl
+            }).done(function (result) {
+            });
+        }
+    }
+</script>
