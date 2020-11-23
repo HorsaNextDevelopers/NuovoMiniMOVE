@@ -12,6 +12,9 @@
                 @Html.DisplayNameFor(model => model.DistintaComponenti)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.CodiceComponentePadre)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.DescrizioneComponentePadre)
             </th>
             <th><a asp-action="Create" class="btn btn-outline-success "><i class="far fa-plus-square"></i>Crea gerarchia</a></th>
@@ -22,6 +25,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.DistintaComponenti.CodiceComponente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodiceComponentePadre)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DescrizioneComponentePadre)

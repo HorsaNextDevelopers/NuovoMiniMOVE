@@ -31,11 +31,11 @@ namespace AuthSystem.Controllers.Api
         // GET: api/OdlApi/5
         [HttpGet("{codiceOdl}")]
         //[Route("GetOdl/{codiceOdl}")]
-        public async Task<ActionResult<Odl>> GetOdl(string codiceOdl)
+        public IActionResult GetOdl(string codiceOdl)
         {
-            var odl = await _context.Odls.FindAsync(codiceOdl);
+            var odl = _context.Odls.Where(c => c.CodiceOdl == codiceOdl).ToList();
 
-            return odl;
+            return this.Ok(odl);
         }
 
       

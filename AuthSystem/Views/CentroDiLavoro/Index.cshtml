@@ -10,6 +10,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.CodiceCentroDiLavoro)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Descrzione)
             </th>
             <th><a asp-action="Create" class="btn btn-outline-success "><i class="far fa-plus-square"></i>Centro di lavoro</a></th>
@@ -18,6 +21,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodiceCentroDiLavoro)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Descrzione)
             </td>

@@ -9,6 +9,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.CodiceOdl)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.QuantitaDaProdurre)
             </th>
             <th>
@@ -29,6 +32,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodiceOdl)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.QuantitaDaProdurre)
             </td>
@@ -54,3 +60,33 @@
     </tbody>
 </table>
 
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div class="form-group">
+                <label class="control-label">Scegli il tuo ordine di lavoro: </label>
+                <select class="form-control" id="selectODL"></select>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        ScegliODL();
+
+        $("#selectODL").change(function () {
+            ScegliODL();
+        });
+    });
+        function ScegliODL() {
+            var codiceOdl = $("#selectODL").val();
+            $.ajax({
+                url: "/api/OdlApi/GetOdl/" + codiceOdl
+            }).done(function (result) {
+                for (i = 0; i < result.length; i++) {
+                    $("#selectODL").append('<option value="' + result[i].codiceOdl + '">' + result[i].codiceOdl + '</option>');
+                }
+            });
+        }
+</script>

@@ -10,6 +10,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.CodiceComponente)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Articoli)
             </th>
             <th>
@@ -24,6 +27,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodiceComponente)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Articoli.CodiceArticolo)
             </td>

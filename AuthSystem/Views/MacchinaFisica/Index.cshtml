@@ -9,6 +9,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.CodiceMacchinaFisica)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Descrizione)
             </th>
             <th>
@@ -20,6 +23,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodiceMacchinaFisica)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Descrizione)
             </td>
