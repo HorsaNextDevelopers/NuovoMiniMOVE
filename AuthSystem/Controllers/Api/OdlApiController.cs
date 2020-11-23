@@ -30,14 +30,10 @@ namespace AuthSystem.Controllers.Api
 
         // GET: api/OdlApi/5
         [HttpGet("{codiceOdl}")]
+        //[Route("GetOdl/{codiceOdl}")]
         public async Task<ActionResult<Odl>> GetOdl(string codiceOdl)
         {
             var odl = await _context.Odls.FindAsync(codiceOdl);
-
-            if (odl == null)
-            {
-                return NotFound();
-            }
 
             return odl;
         }

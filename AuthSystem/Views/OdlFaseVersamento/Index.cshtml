@@ -4,11 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<h1>Versamento</h1>
 <table class="table">
     <thead>
         <tr>
@@ -42,7 +38,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.PezziScartati)
             </th>
-            <th></th>
+            <th><a asp-action="Create" class="btn btn-outline-success "><i class="far fa-plus-square"></i>Versamento</a></th>
         </tr>
     </thead>
     <tbody>
