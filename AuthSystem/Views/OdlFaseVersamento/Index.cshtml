@@ -4,54 +4,6 @@
     ViewData["Title"] = "Index";
 }
 
-
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Index">
-            <div class="form-group">
-                <label class="control-label">Scegli il tuo ordine di lavoro: </label>
-                <select class="form-control" id="selectODL"></select>
-            </div>
-        </form>
-    </div>
-</div>
-
-
-<div class="form-group">
-    <input type="button" value="Prova" class="btn btn-primary" onclick="ScegliODL()" />
-</div>
-
-
-<style>
-    .xd-content .xd-body .xd-body-inner {
-        max-height: unset;
-    }
-
-    .xd-content .xd-body p {
-        color: none;
-        /* text-shadow: 0 0 5px rgba(0, 0, 0, 0.75);*/
-    }
-
-    .xd-content .xd-button.xd-ok {
-        background: #4e549c;
-    }
-</style>
-
-
-<script>
-    $(document).ready(function () {
-        $("#selectODL").change(function () {
-            ScegliODL();
-        });
-    });
-    function ScegliODL() {
-        var codiceOdl = $("#selectODL").val();
-        $.ajax({
-            url: "/api/OdlApi/GetOdl/" + "/" + codiceOdl
-        }).done(function (result) {
-        });
-    }</script>
-
 <h1>Versamento</h1>
 <table class="table">
     <thead>
@@ -90,45 +42,44 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Articoli.CodiceArticolo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Odl.CodiceOdl)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OdlFasi.FaseOdl)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MacchinaFisiche.CodiceMacchinaFisica)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AspNetUsers.UserName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataInizio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataFine)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TempoLavoroNetto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PezziBuoni)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PezziScartati)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdVersamento "><i class="fa fa-marker fa-lg"></i></a> |
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Articoli.CodiceArticolo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Odl.CodiceOdl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OdlFasi.FaseOdl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MacchinaFisiche.CodiceMacchinaFisica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AspNetUsers.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInizio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempoLavoroNetto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PezziBuoni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PezziScartati)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdVersamento "><i class="fa fa-marker fa-lg"></i></a> |
 
-                    <a asp-action="Delete" asp-route-id="@item.IdVersamento " class="text-danger ml-1"><i class="fa fa-trash-alt fa-lg"></i></a>
-                </td>
-            </tr>
-        }
+                <a asp-action="Delete" asp-route-id="@item.IdVersamento " class="text-danger ml-1"><i class="fa fa-trash-alt fa-lg"></i></a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
