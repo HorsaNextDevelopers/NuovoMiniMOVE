@@ -12,6 +12,7 @@ namespace AuthSystem.Models
             InCorso = 2,
             Sospeso = 3,
             Completato = 4
+
         }
     
 }
