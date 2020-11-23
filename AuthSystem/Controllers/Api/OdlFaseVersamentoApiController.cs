@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AuthSystem.Models;
+using AuthSystem.ApiModel;
 
 namespace AuthSystem.Controllers.Api
 {
@@ -45,8 +46,17 @@ namespace AuthSystem.Controllers.Api
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutOdlFaseVersamento(int id, OdlFaseVersamento odlFaseVersamento)
+        public async Task<IActionResult> PutOdlFaseVersamento(int id, OdlFaseVersamento odlFaseVersamento )
         {
+            var VersamentoEffettuato = _context.OdlFaseVersamenti.Any(p => p.IdVersamento == id && p.IdFaseODL == odlFaseVersamento.IdFaseODL);
+
+
+            if (VersamentoEffettuato && odlFaseVersamento.PezziBuoni > 0)
+            {
+               
+            }
+
+
             if (id != odlFaseVersamento.IdVersamento)
             {
                 return BadRequest();

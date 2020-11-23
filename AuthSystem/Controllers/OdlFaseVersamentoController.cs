@@ -52,7 +52,7 @@ namespace AuthSystem.Controllers
         public IActionResult Create()
         {
             ViewData["CodiceArticolo"] = new SelectList(_context.Articoli, "CodiceArticolo", "CodiceArticolo");
-            ViewData["IdAspNetUsers"] = new SelectList(_context.AspNetUsers, "Id", "Id");
+            ViewData["IdAspNetUsers"] = new SelectList(_context.AspNetUsers, "Id", "UserName");
             ViewData["CodiceMacchinaFisica"] = new SelectList(_context.MacchinaFisica, "CodiceMacchinaFisica", "CodiceMacchinaFisica");
             ViewData["CodiceOdl"] = new SelectList(_context.Odls, "CodiceOdl", "CodiceOdl");
             ViewData["IdFaseODL"] = new SelectList(_context.OdlFasi, "IdFaseOdl", "IdFaseOdl");
@@ -73,7 +73,7 @@ namespace AuthSystem.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CodiceArticolo"] = new SelectList(_context.Articoli, "CodiceArticolo", "CodiceArticolo", odlFaseVersamento.CodiceArticolo);
-            ViewData["IdAspNetUsers"] = new SelectList(_context.AspNetUsers, "Id", "Id", odlFaseVersamento.IdAspNetUsers);
+            ViewData["IdAspNetUsers"] = new SelectList(_context.AspNetUsers, "Id", "UserName", odlFaseVersamento.IdAspNetUsers);
             ViewData["CodiceMacchinaFisica"] = new SelectList(_context.MacchinaFisica, "CodiceMacchinaFisica", "CodiceMacchinaFisica", odlFaseVersamento.CodiceMacchinaFisica);
             ViewData["CodiceOdl"] = new SelectList(_context.Odls, "CodiceOdl", "CodiceOdl", odlFaseVersamento.CodiceOdl);
             ViewData["IdFaseODL"] = new SelectList(_context.OdlFasi, "IdFaseOdl", "IdFaseOdl", odlFaseVersamento.IdFaseODL);
@@ -94,7 +94,7 @@ namespace AuthSystem.Controllers
                 return NotFound();
             }
             ViewData["CodiceArticolo"] = new SelectList(_context.Articoli, "CodiceArticolo", "CodiceArticolo", odlFaseVersamento.CodiceArticolo);
-            ViewData["IdAspNetUsers"] = new SelectList(_context.AspNetUsers, "Id", "Id", odlFaseVersamento.IdAspNetUsers);
+            ViewData["IdAspNetUsers"] = new SelectList(_context.AspNetUsers, "Id", "UserName", odlFaseVersamento.IdAspNetUsers);
             ViewData["CodiceMacchinaFisica"] = new SelectList(_context.MacchinaFisica, "CodiceMacchinaFisica", "CodiceMacchinaFisica", odlFaseVersamento.CodiceMacchinaFisica);
             ViewData["CodiceOdl"] = new SelectList(_context.Odls, "CodiceOdl", "CodiceOdl", odlFaseVersamento.CodiceOdl);
             ViewData["IdFaseODL"] = new SelectList(_context.OdlFasi, "IdFaseOdl", "IdFaseOdl", odlFaseVersamento.IdFaseODL);
@@ -134,7 +134,7 @@ namespace AuthSystem.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CodiceArticolo"] = new SelectList(_context.Articoli, "CodiceArticolo", "CodiceArticolo", odlFaseVersamento.CodiceArticolo);
-            ViewData["IdAspNetUsers"] = new SelectList(_context.AspNetUsers, "Id", "Id", odlFaseVersamento.IdAspNetUsers);
+            ViewData["IdAspNetUsers"] = new SelectList(_context.AspNetUsers, "Id", "UserName", odlFaseVersamento.IdAspNetUsers);
             ViewData["CodiceMacchinaFisica"] = new SelectList(_context.MacchinaFisica, "CodiceMacchinaFisica", "CodiceMacchinaFisica", odlFaseVersamento.CodiceMacchinaFisica);
             ViewData["CodiceOdl"] = new SelectList(_context.Odls, "CodiceOdl", "CodiceOdl", odlFaseVersamento.CodiceOdl);
             ViewData["IdFaseODL"] = new SelectList(_context.OdlFasi, "IdFaseOdl", "IdFaseOdl", odlFaseVersamento.IdFaseODL);
