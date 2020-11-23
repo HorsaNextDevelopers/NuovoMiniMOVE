@@ -54,6 +54,8 @@ namespace AuthSystem.Controllers.Api
             if (VersamentoEffettuato && odlFaseVersamento.PezziBuoni > 0)
             {
                
+                
+
             }
 
 
