@@ -21,6 +21,7 @@ namespace AuthSystem.Models
         [Required(ErrorMessage = "Immettere la descrizione dell'articolo")]
         [DisplayName("Descrizione articolo")]
         public string Descrizione { get; set; }
-        
+
+        public  CategoriaArtEnum Categoria { get; set; }
     }
 }

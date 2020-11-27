@@ -15,8 +15,6 @@ namespace AuthSystem.Models
         public string CodiceCentroDiLavoro{ get; set; }
         [Column(TypeName = "nvarchar(250)")]
         public string Descrzione { get; set; }
-
-       
         public ICollection<MacchinaFisica> MacchineFisiche { get; set; }
     }
 }
